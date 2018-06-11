@@ -1,6 +1,13 @@
 apply plugin: 'application'
-mainClassName = 'JavaPI'
-sourceSets.main.java.srcDirs = ['src']
+mainClassName = 'org.alanzheng.JavaPI'
+sourceSets.main.java.srcDirs = ['src/org/alanzheng']
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'org.alanzheng.JavaPI'
+    baseName 'org.alanzheng'
+  }
+}
 
 repositories {
   mavenCentral()
