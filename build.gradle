@@ -1,0 +1,11 @@
+apply plugin: 'application'
+mainClassName = 'JavaPI'
+sourceSets.main.java.srcDirs = ['src']
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+
+}
