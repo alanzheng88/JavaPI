@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.Scanner;
 
 public class JavaPI {
 
@@ -45,17 +46,31 @@ public class JavaPI {
     return PI.setScale(num, RoundingMode.FLOOR);
   }
   
-  private static BigInteger factorial(BigInteger n) {
-    BigInteger result = BigInteger.ONE;
-    while (!n.equals(BigInteger.ZERO)) {
-      result = result.multiply(n);
-      n = n.subtract(BigInteger.ONE);
+  private static boolean tryParseInt(String value) {
+    try {
+      Integer.parseInt(value);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
     }
-    return result;
   }
-
   public static void main(String[] args) {
     System.out.println("======= Java PI ========");
-    System.out.println(JavaPI.getValueOfPi(20).toString());
+    Scanner sc = new Scanner(System.in);
+    boolean done = false;
+    int num = -1;
+    System.out.println("Press enter again to exit");
+    System.out.println("Otherwise, enter number of digits you want for PI: ");
+    String line;
+    while (!(line = sc.nextLine()).isEmpty()) {
+      if (tryParseInt(line)) {
+        num = Integer.parseInt(line);
+        if (num < 0) {
+          System.out.println("Invalid input. Number must be not be less than 0.");
+          continue;
+        }
+        System.out.println(JavaPI.getValueOfPi(num).toString());
+      }
+    } 
   }
 }

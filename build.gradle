@@ -2,6 +2,10 @@ apply plugin: 'application'
 mainClassName = 'org.alanzheng.JavaPI'
 sourceSets.main.java.srcDirs = ['src/org/alanzheng']
 
+run {
+  standardInput = System.in
+}
+
 jar {
   manifest {
     attributes 'Main-Class': 'org.alanzheng.JavaPI'
